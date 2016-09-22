@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test Suite</title>
+    <script type="text/javascript" src="js/calc.js"></script>
+<style>
+    #results li.pass { color: green; }
+    #results li.fail { color: red; }
+</style>
+</head>
+<body>
+<ul id="results"></ul>
+<script>
+    window.onload = function(){
+
+
+        function testInput() {
+            title("testInput()");
+            var calculator = new Calculator();
+            assert(calculator.evalClick("1") == 1, "1");
+            assert(calculator.evalClick("2") == 12, "12");
+            assert(calculator.evalClick("3") == 123, "123");
+            assert(calculator.evalClick("C") == 0, "0");
+        }
+        testInput.call(this);
+
+        function testAdd1P1() {
+            title("testAdd1P1()");
+            var calculator = new Calculator();
+            calculator.evalClick("C");
+            calculator.evalClick("1");
+            calculator.evalClick("+");
+            calculator.evalClick("1");
+            assert(calculator.evalClick("=") == 2, "1+1 = 2");
+        }
+        testAdd1P1.call(this);
+
+        function testAdd2P2() {
+            title("testAdd2P2()");
+            var calculator = new Calculator();
+            calculator.evalClick("C");
+            calculator.evalClick("2");
+            calculator.evalClick("+");
+            calculator.evalClick("2");
+            assert(calculator.evalClick("=") == 4, "2+2 = 4");
+        }
+        testAdd2P2.call(this);
+
+        function testMult2X2() {
+            title("testMult2X2()");
+            var calculator = new Calculator();
+            calculator.evalClick("C");
+            calculator.evalClick("2");
+            calculator.evalClick("*");
+            calculator.evalClick("2");
+            assert(calculator.evalClick("=") == 4, "2*2 = 4");
+        }
+        testMult2X2.call(this);
+
+        function testDiv8D2() {
+            title("testMult2X2()");
+            var calculator = new Calculator();
+            calculator.evalClick("C");
+            calculator.evalClick("8");
+            calculator.evalClick("/");
+            calculator.evalClick("2");
+            assert(calculator.evalClick("=") == 4, "8 / 2 = 4");
+        }
+        testDiv8D2.call(this);
+
+        function testDiv1D3() {
+            title("testMult2X2()");
+            var calculator = new Calculator();
+            calculator.evalClick("C");
+            calculator.evalClick("1");
+            calculator.evalClick("/");
+            calculator.evalClick("3");
+            assert(calculator.evalClick("=") == 0.3333333333333333, "1 / 3 = 0.3333333");
+        }
+        testDiv1D3.call(this);
+
+        function testSqrt() {
+            title("testSqrt()");
+            var calculator = new Calculator();
+            calculator.evalClick("C");
+            calculator.evalClick("2");
+            assert(calculator.evalClick("sqrt") == 1.4142135623730951, "sqrt(2) = 1.4142135623730951");
+        }
+        testSqrt.call(this);
+
+    };
+
+
+
+    function assert( value, desc ) {
+        var li = document.createElement("li");
+        li.className = value ? "pass" : "fail";
+        li.appendChild( document.createTextNode( desc ) );
+        document.getElementById("results").appendChild( li );
+    }
+
+    function title(title) {
+        var li = document.createElement("li");
+        li.appendChild(document.createTextNode(title));
+        document.getElementById("results").appendChild(li);
+    }
+
+</script>
+</body>
+</html>

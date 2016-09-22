@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script type="text/javascript" src="js/calc.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+    <input id="result" class="result" value="0" /><br/>
+    <button id="button_sqrt" class="blue_button" type="button" value="sqrt" >&radic;</button>
+    <button id="button_c" class="yellow_button" type="button" value="C">C</button>
+    <button id="button_cl" class="yellow_button" type="button" value="CI">CI</button>
+    <button id="button_mult" class="blue_button" type="button" value="X">X</button><br/>
+    <button id="button_seven" type="button" value="7" >7</button>
+    <button id="button_eight" type="button" value="8" >8</button>
+    <button id="button_nine" type="button" value="9" >9</button>
+    <button id="button_div" class="blue_button" type="button" value="/">/</button><br/>
+    <button id="button_four" type="button" value="4">4</button>
+    <button id="button_five" type="button" value="5">5</button>
+    <button id="button_six" type="button" value="6">6</button>
+    <button id="button_minus" class="blue_button" type="button" value="-">-</button><br/>
+    <button id="button_one" type="button" value="1">1</button>
+    <button id="button_two" type="button" value="2">2</button>
+    <button id="button_three" type="button" value="3">3</button>
+    <button id="button_plus" class="blue_button" type="button" value="+">+</button><br/>
+    <button id="button_zero" type="button" value="0">0</button>
+    <button id="button_point" type="button" value=".">.</button>
+    <button id="button_per_cent" class="blue_button" type="button" value="%">%</button>
+    <button id="button_equals" class="blue_button" type="button" value="=">=</button>
+</body>
+<script>
+    $(document).ready(function() {
+        $("button:button").click(handler);
+    });
+
+    function handler(){
+        var result = evalClick($(this).val());
+        if(!(result % 1 === 0)){
+            result = result.toFixed(7);
+        }
+        $("input#result").val(result);
+    }
+
+</script>
+</html>

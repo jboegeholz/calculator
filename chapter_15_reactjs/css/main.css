@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'digital-7';
+  src: url("digital-7%20(mono).ttf")
+}
+button[type="button"] {
+    width: 30px;
+    height: 26px;
+    background-color: RGB(31, 31, 29);
+    color: whitesmoke;
+    border-radius: 8px;
+}
+button[type="button"].yellow_button {
+    background-color: RGB(234, 196, 45);
+    color: black;
+}
+button[type="button"].blue_button {
+    background-color: RGB(44, 76, 73);
+}
+input#result{
+    width: 100%;
+    background-color: RGB(31, 31, 29);
+    color: RGB(130, 255, 209);
+    text-align: right;
+    font-family: 'digital-7';
+    font-size: larger;
+    letter-spacing: 2px;
+}
+
+div#root{
+    margin: 0 auto;
+    width: 150px;
+}
+

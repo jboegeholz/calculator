@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script type="text/javascript" src="js/calc.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+</head>
+<body data-ng-app="CalculatorApp">
+    <div id="calculator" data-ng-controller="CalculatorCtrl">
+        <div id="display">
+            <input id="result" class="result" type="text" ng-model="widget.title" maxlength="7"/><br/>
+        </div>
+        <div id="buttons">
+            <button id="button_sqrt" data-ng-click="eval($event)" class="blue_button" type="button" value="sqrt" >&radic;</button>
+            <button id="button_c" data-ng-click="eval($event)" class="yellow_button" type="button" value="C">C</button>
+            <button id="button_cl" data-ng-click="eval($event)" class="yellow_button" type="button" value="CI">CI</button>
+            <button id="button_mult" data-ng-click="eval($event)" class="blue_button" type="button" value="X">X</button><br/>
+            <button id="button_seven" data-ng-click="eval($event)" type="button" value="7" >7</button>
+            <button id="button_eight" data-ng-click="eval($event)" type="button" value="8" >8</button>
+            <button id="button_nine" data-ng-click="eval($event)" type="button" value="9" >9</button>
+            <button id="button_div" data-ng-click="eval($event)" class="blue_button" type="button" value="/">/</button><br/>
+            <button id="button_four" data-ng-click="eval($event)" type="button" value="4">4</button>
+            <button id="button_five" data-ng-click="eval($event)" type="button" value="5">5</button>
+            <button id="button_six" data-ng-click="eval($event)" type="button" value="6">6</button>
+            <button id="button_minus" data-ng-click="eval($event)" class="blue_button" type="button" value="-">-</button><br/>
+            <button id="button_one" data-ng-click="eval($event)" type="button" value="1">1</button>
+            <button id="button_two" data-ng-click="eval($event)" type="button" value="2">2</button>
+            <button id="button_three" data-ng-click="eval($event)" type="button" value="3">3</button>
+            <button id="button_plus" data-ng-click="eval($event)" class="blue_button" type="button" value="+">+</button><br/>
+            <button id="button_zero" data-ng-click="eval($event)" type="button" value="0">0</button>
+            <button id="button_point" data-ng-click="eval($event)" type="button" value=".">.</button>
+            <button id="button_per_cent" data-ng-click="eval($event)" class="blue_button" type="button" value="%">%</button>
+            <button id="button_equals" data-ng-click="eval($event)" class="blue_button" type="button" value="=">=</button>
+        </div>
+    </div>
+<script>
+var app = angular.module('CalculatorApp', []);
+
+app.controller('CalculatorCtrl', ['$scope', function($scope) {
+    $scope.widget = {title: '0'};
+    $scope.eval = function(obj) {
+        var result = evalClick(obj.target.attributes.value.value);
+        if(!(result % 1 === 0)){
+            result = result.toFixed(7);
+        }
+        this.widget.title = result;
+    };
+}]);
+</script>
+
+</body>
+</html>
